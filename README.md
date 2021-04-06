@@ -81,7 +81,9 @@ int main(int argc, char *argv[])
 The names of the config parameters were created to be self-explanatory.
 
 In **data** the year and the json file with the certified lumisections must be specified, e.g.
-```...
+
+```
+...
 IsData = true
 year = 2016
 ApplyGoodRunSelection = true
@@ -143,7 +145,7 @@ dxyTrkLooseCut = 1.0
 dxyTrkCut = 0.02
 dzTrkLooseCut = 1.0
 dzTrkCut = 0.04
-`
+
 ``
 
 The analysis macro can be executed by issuing the command
