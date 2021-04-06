@@ -1,11 +1,11 @@
 # Analyses/H2aa_2mu2tau_PhDthesis
 
-**CMS Analysis Framework of DESY CMS Higgs -> tautau group for H->aa->2mu2tau analysis**
+**Analysis Framework of the DESY CMS Higgs -> tautau group for H->aa->2mu2tau analysis**
 
 Search for light bosons in the final state with muons and tau leptons with CMS Run II data
 
 
-See also the code documentation [Doxygen](hhttps://www.desy.de/~consuegs/docs/analysis-framework/doxygen/) page
+See also the code documentation [Doxygen](https://www.desy.de/~consuegs/docs/analysis-framework/doxygen/) page
 
 
 This repository contains only specific code to be used for the analysis
@@ -21,19 +21,20 @@ This repository contains only specific code to be used for the analysis
 
 ## Installation
 
-The Repository can be checked out via https:
+The Repository can be checked out via:
 
-```git clone https://github.com/consuegs/H2aa_2mu2tau_PhDthesis.git
+```bash
+git clone https://github.com/consuegs/H2aa_2mu2tau_PhDthesis.git
 ```
 
 Scale factors and efficiencies can be obtained from the [Desy Tau Analyses repository](https://github.com/DesyTau/DesyTauAnalysesRun2_25ns)
 
-For instructions on how to synchronize your area with GitHub for NTuple production, plese refer to [Desy Tau Analyses main twiki](https://twiki.cern.ch/twiki/bin/viewauth/CMS/DesyTauAnalysesRun2)
+For instructions on how to synchronize your area with GitHub for NTuple production, please refer to [Desy Tau Analyses main twiki](https://twiki.cern.ch/twiki/bin/viewauth/CMS/DesyTauAnalysesRun2)
 
 
 ## Analysis note 
 
-The analysis is documented in the CMS Analysis note [AN-2018/081](http://cms.cern.ch/iCMS/jsp/db_notes/noteInfo.jsp?cmsnoteid=CMS%20AN-2018/081) and PhD Thesis publicly available in:
+This analysis is documented in the CMS Analysis note [AN-2018/081](http://cms.cern.ch/iCMS/jsp/db_notes/noteInfo.jsp?cmsnoteid=CMS%20AN-2018/081) (CMS internal access) and the PhD Thesis (publicly available), which can be accessed in the following locations:
 
 Desy publication database:
 
@@ -80,9 +81,10 @@ IsData = true
 year = 2016
 ApplyGoodRunSelection = true
 jsonFile = Cert_271036-284044_13TeV_ReReco_07Aug2017_Collisions16_JSON.json
+...
 ```
 
-### Event loop
+#### Event loop
 
 The event loop starts like this
 ```cpp
@@ -92,18 +94,15 @@ for (int iCand = 0; iCand < numberOfCandidates; iCand++)
 			tree_->GetEntry(iCand);
 
 			events++;
-   // apply selection criteria
+        // apply selection criteria
         } 
 ```
 where the events are read from the ntuple files and a set of selection criteria are applied. The predefined selection cuts summarized in the configuration file are read and applied to the event within the event loop. 
 Generator event weights in MC and JSON certified lumisection selections in data are also considered.
 
-### Selections
-
-
 ##### Veto on events with at leat one b-tagged jet
 
-For the b-tagging there is a line in the configuration file, where the working point to be used is defined.
+A line in the configuration file defines the working point to be used for the b-tagging
 
 ```
 btagCut = 0.6321
@@ -113,7 +112,7 @@ Events with at least one b-tagged jet, where b-jets are tagged with the medium w
 
 ##### Muons and tracks
 
-Muon and tracks selection has its own set of cuts defined in the configuration file
+Muon and tracks have its own set of cuts defined in the configuration file
 
 ```
 ptGoodMuonCut = 3
@@ -139,9 +138,10 @@ dxyTrkLooseCut = 1.0
 dxyTrkCut = 0.02
 dzTrkLooseCut = 1.0
 dzTrkCut = 0.04
-```
+`
+``
 
-To execute the macro
+The analysis macro can be executed by issuing the command
 ```bash
 cd Run2016
 analysis_macro analysisMacro.conf FileListName
