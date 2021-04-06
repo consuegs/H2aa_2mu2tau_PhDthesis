@@ -41,22 +41,28 @@ Desy publication database:
 [PUBDB-2020-04343](https://bib-pubdb1.desy.de/record/450397)
 
 Bibliotek Uni Hamburg:
+
 [https://ediss.sub.uni-hamburg.de/handle/ediss/8690](https://ediss.sub.uni-hamburg.de/handle/ediss/8690)
 
 iCMS:
+
 [http://cms.cern.ch/iCMS/jsp/iCMS.jsp?mode=single&part=publications](http://cms.cern.ch/iCMS/jsp/iCMS.jsp?mode=single&part=publications)
 
 CDS:
+
 [CERN-THESIS-2020-181](https://cds.cern.ch/record/2744082)
 
 Inspire:
+
 [https://inspirehep.net/literature/1830713](https://inspirehep.net/literature/1830713)
 
 
 ## Main analysis macro
 
-The main analysis macro (analysis_macro.cpp) is integrated to the Desy Tau Analyses framework and should be located in [${CMSSW_BASE}/src/DesyTauAnlalysis/NtupleMaker/bin/](${CMSSW_BASE}/src/DesyTauAnlalysis/NtupleMaker/bin/).
+The main analysis macro (analysis_macro.cpp) is integrated to the Desy Tau Analyses framework and should be compiled from [${CMSSW_BASE}/src/DesyTauAnlalysis/NtupleMaker/bin/](${CMSSW_BASE}/src/DesyTauAnlalysis/NtupleMaker/bin/).
+
 The macro performs an offline selection of a pair of muons and a pair of tracks after the online selection of events with isolated single muon triggers. A configuration file is used as input. 
+
 Configuration files are available separately for data, background MC, and signal MC samples for the 2016, 2017, and 2018 periods:
 * [analysisMacro.conf](Run2016/analysisMacro.conf)
 * [analysisMacro_mc.conf](Run2016/analysisMacro_mc.conf)
@@ -75,8 +81,7 @@ int main(int argc, char *argv[])
 The names of the config parameters were created to be self-explanatory.
 
 In **data** the year and the json file with the certified lumisections must be specified, e.g.
-```
-...
+```...
 IsData = true
 year = 2016
 ApplyGoodRunSelection = true
@@ -107,7 +112,7 @@ A line in the configuration file defines the working point to be used for the b-
 ```
 btagCut = 0.6321
 ```
-Events with at least one b-tagged jet, where b-jets are tagged with the medium working point using the deep flavour algorithm are vetoed.
+A veto on events with at least one b-tagged jet is applied (the deep flavour algorithm with the medium working point is used).
 
 
 ##### Muons and tracks
@@ -142,18 +147,21 @@ dzTrkCut = 0.04
 ``
 
 The analysis macro can be executed by issuing the command
+
 ```bash
-cd Run2016
 analysis_macro analysisMacro.conf FileListName
 ```
 
 ## NAF Submission
 
-Bash scripts to submit to NAF condor queue are available:
+Bash scripts to submit to the NAF condor queue are available:
 
 `HTC_qsub_all.sh` - all jobs
+
 `HTC_qsub_data.sh` - data only jobs 
+
 `HTC_qsub_bkgd.sh` - background MC only jobs 
+
 `HTC_qsub_susy.sh` - signal only jobs 
 
 ```bash
@@ -176,10 +184,10 @@ After the jobs are submitted directories called `FileListName_files` will be cre
 Once the directory `FileListName_files` is created and all the jobs finished correctly, one can proceed to merge the output root files by issuing the command
 
 ```bash
-./hadd_all.sh` - merge all jobs
-./hadd_data.sh` - merge data only jobs 
-./hadd_bkgd.sh` - merge background MC only jobs 
-./hadd_susy.sh` - merge signal only jobs 
+./hadd_all.sh - merge all jobs
+./hadd_data.sh - merge data only jobs 
+./hadd_bkgd.sh - merge background MC only jobs 
+./hadd_susy.sh - merge signal only jobs 
 
 ```
 
@@ -244,13 +252,13 @@ set environment of CMSSW 8_1_0
 
 ${your_directory}/H2aa_2mu2tau/${year}/Inputs/
 
-    Classification of data is performed with the weight files produced in the training. The output of this step are root files called "SUSY*_BDTOutput_M-.root" and "SingleMuon_BDTOutput_M-*.root" containing the BDT output histograms
+Classification of data is performed with the weight files produced in the training. The output of this step are root files called "SUSY*_BDTOutput_M-.root" and "SingleMuon_BDTOutput_M-*.root" containing the BDT output histograms
 
-    Interpolation of signal acceptance with 0.2 GeV step
+Interpolation of signal acceptance with 0.2 GeV step
 
-    Creation of all the datacards for limit computation using the files above as input
+Creation of all the datacards for limit computation using the files above as input
 
-    All the steps mentioned above are performed automatically with RunAllInputs()
+All the steps mentioned above are performed automatically with RunAllInputs()
 
 * `CreateInputs.C`
 
@@ -366,4 +374,4 @@ ${your_directory}/H2aa_2mu2tau/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoto
 If further clarifications are needed please contact: [sandra.consuegra.rodriguez@desy.de](sandra.consuegra.rodriguez@desy.de), [sandra.consuegra.rodriguez@cern.ch](sandra.consuegra.rodriguez@cern.ch)
 
 
-Instructions last updated: 06.04.2021
+#### Instructions last updated: 06.04.2021
