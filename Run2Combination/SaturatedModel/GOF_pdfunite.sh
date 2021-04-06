@@ -1,0 +1,2 @@
+#GoFTests Saturated Model
+pdfunite H2aa_2mu2tau_GoFma3.6.pdf H2aa_2mu2tau_GoFma4.pdf H2aa_2mu2tau_GoFma5.pdf H2aa_2mu2tau_GoFma6.pdf H2aa_2mu2tau_GoFma7.pdf H2aa_2mu2tau_GoFma8.pdf H2aa_2mu2tau_GoFma9.pdf H2aa_2mu2tau_GoFma10.pdf H2aa_2mu2tau_GoFma11.pdf H2aa_2mu2tau_GoFma12.pdf H2aa_2mu2tau_GoFma13.pdf H2aa_2mu2tau_GoFma14.pdf H2aa_2mu2tau_GoFma15.pdf H2aa_2mu2tau_GoFma16.pdf  H2aa_2mu2tau_GoFma17.pdf H2aa_2mu2tau_GoFma18.pdf H2aa_2mu2tau_GoFma19.pdf H2aa_2mu2tau_GoFma20.pdf H2aa_2mu2tau_GoFma21.pdf GoFTests.pdf
