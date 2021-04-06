@@ -2,7 +2,7 @@
 
 **Analysis Framework of the DESY CMS Higgs -> tautau group for H->aa->2mu2tau analysis**
 
-Search for light bosons in the final state with muons and tau leptons with CMS Run II data
+`Search for light bosons in the final state with muons and tau leptons with CMS Run II data`
 
 
 See also the code documentation [Doxygen](https://www.desy.de/~consuegs/docs/analysis-framework/doxygen/) page
@@ -168,15 +168,14 @@ Bash scripts to submit to the NAF condor queue are available:
 ./HTC_qsub_all.sh
 ```
 
-After the jobs are submitted directories called `FileListName_files` are created. In each of these directories there will be the following set of files:
-* `FileListName_$JobNumber` - File containing paths to ntuples stored at TIER-2 DESY
+After the jobs are submitted directories called `FileListName_files` are created. In each of these directories the following set of files are created:
+* `FileListName_$JobNumber` - file containing paths to ntuples stored at TIER-2 DESY
 * `FileListName_$JobNumber.root` - the output root file which contains a set of trees corresponding to the signal region (SR) and Control regions (CRs) filled with the information of relevant variables used for the MVA discrimination
 * `FileListName_$JobNumber.error` - a file that contains information on whether the executable ran with no fatal errors
 * `FileListName_$JobNumber.out` -  a file that contains information on the number of processed events and warnings 
 * `FileListName_$JobNumber.log` -  a file that contains information on CPU, disks, and memory use by the corresponding job
 * `FileListName_$JobNumber.sh` - SCRAM architecture and CMSSW environment for the job
 * `FileListName_$JobNumber.submit` - HTCondor submit configuration file. If the job finished with error it can be resubmited by issuing the command
-
 ```bash
 ./resubmit.sh
 ```
@@ -205,7 +204,7 @@ Filelists:
 
 Merge step to leave only three analysis categories (lep_lep, lep_had, and had_had) out of the initial 9 categories (e.g ele_ele, ele_mu, mu_ele, mu_mu for lep_lep), defined in analysis_macro.cpp
 
-${your_directory}/H2aa_2mu2tau/${year}/MVA_BDT/
+`${your_directory}/H2aa_2mu2tau/${year}/MVA_BDT/`
 
 -Merge Trees:
 
@@ -217,7 +216,7 @@ ${your_directory}/H2aa_2mu2tau/${year}/MVA_BDT/
 
 ### Interpolation procedure
 
-ForInterpolation.C:
+* `ForInterpolation.C:`
 
 -For each generated mass point there are 4 discriminating variables assumed to be uncorrelated. An analytic function is associated to each of the 4 distributions and a MLF is performed to determine the optimal parameters
 
@@ -239,7 +238,7 @@ $category = lep_lep, lep_had, had_had
 
 -All signal samples are generated with toys and the training (trainBDT_$category.py) is performed independently for each mass point and category
 
-${your_directory}/H2aa_2mu2tau/${year}/MVA_BDT/
+`${your_directory}/H2aa_2mu2tau/${year}/MVA_BDT/`
 
 set environment of CMSSW 8_1_0
 
@@ -250,9 +249,9 @@ set environment of CMSSW 8_1_0
 
 * `TrainAll.sh`
 
-${your_directory}/H2aa_2mu2tau/${year}/Inputs/
+`${your_directory}/H2aa_2mu2tau/${year}/Inputs/`
 
-Classification of data is performed with the weight files produced in the training. The output of this step are root files called "SUSY*_BDTOutput_M-.root" and "SingleMuon_BDTOutput_M-*.root" containing the BDT output histograms
+Classification of data is performed with the weight files produced in the training. The output of this step are root files called `SUSY*_BDTOutput_M-.root` and `SingleMuon_BDTOutput_M-*.root` containing the BDT output histograms
 
 Interpolation of signal acceptance with 0.2 GeV step
 
@@ -264,13 +263,13 @@ All the steps mentioned above are performed automatically with RunAllInputs()
 
 Function Output created
 
-RunAllInputs() "SUSY*_BDTOutput_M-.root" and "SingleMuon_BDTOutput_M-*.root" with the BDT output histograms
+RunAllInputs() `SUSY*_BDTOutput_M-.root` and `SingleMuon_BDTOutput_M-*.root` with the BDT output histograms
 
 Option of submitting this time consuming step to condor with:
 
 * `SubmitCreateInputs.sh`
 
-${your_directory}/H2aa_2mu2tau/${year}/Inputs/DataCards/
+`${your_directory}/H2aa_2mu2tau/${year}/Inputs/DataCards/`
 
 -Run combine tool locally:
 
@@ -286,7 +285,7 @@ or submit to condor
 
 ### Main plotting macros 
 
-${your_directory}/H2aa_2mu2tau/${year}/Inputs/Final_Discriminant/
+`${your_directory}/H2aa_2mu2tau/${year}/Inputs/Final_Discriminant/`
 
 #### Final discriminant (BDT output):
 
@@ -294,13 +293,13 @@ ${your_directory}/H2aa_2mu2tau/${year}/Inputs/Final_Discriminant/
 
 `PlotAll()`
 
-${your_directory}/H2aa_2mu2tau/${year}/Inputs/Bkgd_Validation/
+`${your_directory}/H2aa_2mu2tau/${year}/Inputs/Bkgd_Validation/`
 
  #### Validation of Background Model:
 
 * `BkgdValidation.C`
 
-${your_directory}/H2aa_2mu2tau/${year}/Inputs/Signal_Validation/
+`${your_directory}/H2aa_2mu2tau/${year}/Inputs/Signal_Validation/`
 
 * `SignalValidation.C`
 
@@ -312,13 +311,13 @@ Validation() Validation/
 
 ### Limits:
 
-${your_directory}/H2aa_2mu2tau/${year}/Inputs/DataCards/
+`${your_directory}/H2aa_2mu2tau/${year}/Inputs/DataCards/`
 
 * `PlotLimits.C`
 
 ### Run 2 combination directory 
 
-${your_directory}/H2aa_2mu2tau/Run2Combination/
+`${your_directory}/H2aa_2mu2tau/Run2Combination/`
 
 -Script to copy the datacards from 2016, 2017, and 2018 folders:
 
@@ -336,13 +335,13 @@ ${your_directory}/H2aa_2mu2tau/Run2Combination/
 
 [H->tau tau meeting (16.12.2019)-Trk isolation SF](https://indico.desy.de/indico/event/24401/)
 
-${your_directory}/H2aa_2mu2tau/${year}/TrkIso_SF_ZTT/
+`${your_directory}/H2aa_2mu2tau/${year}/TrkIso_SF_ZTT/`
 
 ### Interpretation of results in the context of the 2HDM+S and Dark Photon models 
 
 Description of the benchmark models and the macros in:
 
-${your_directory}/H2aa_2mu2tau/Interpretation/
+`${your_directory}/H2aa_2mu2tau/Interpretation/`
 
 can be found in the following dedicated twiki page:
 
@@ -357,7 +356,7 @@ can be found in the following dedicated twiki page:
 
 -Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tangent beta)
 
-${your_directory}/H2aa_2mu2tau/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/
+`${your_directory}/H2aa_2mu2tau/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
 
 * `PlotExclusion.C`
 
@@ -367,7 +366,7 @@ ${your_directory}/H2aa_2mu2tau/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/
 
 -Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for Dark Photon model
 
-${your_directory}/H2aa_2mu2tau/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/
+`${your_directory}/H2aa_2mu2tau/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
 
 * `PlotExclusion.C`
 
