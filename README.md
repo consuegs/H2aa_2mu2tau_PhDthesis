@@ -146,7 +146,7 @@ dxyTrkCut = 0.02
 dzTrkLooseCut = 1.0
 dzTrkCut = 0.04
 
-``
+```
 
 The analysis macro can be executed by issuing the command
 
@@ -170,7 +170,7 @@ Bash scripts to submit to the NAF condor queue are available:
 ./HTC_qsub_all.sh
 ```
 
-After the jobs are submitted directories called `FileListName_files` will be created. In each of these directories there will be the following set of files:
+After the jobs are submitted directories called `FileListName_files` arecreated. In each of these directories there will be the following set of files:
 * `FileListName_$JobNumber` - File containing paths to ntuples stored at TIER-2 DESY
 * `FileListName_$JobNumber.root` - the output root file which contains a set of trees corresponding to the signal region (SR) and Control regions (CRs) filled with the information of relevant variables used for the MVA discrimination
 * `FileListName_$JobNumber.error` - a file that contains information on whether the executable ran with no fatal errors
@@ -213,7 +213,7 @@ ${your_directory}/H2aa_2mu2tau/${year}/MVA_BDT/
 
 * `MergeTrees.C`
 
-* `MergeAll()`
+`MergeAll()`
 
 
 
@@ -294,7 +294,7 @@ ${your_directory}/H2aa_2mu2tau/${year}/Inputs/Final_Discriminant/
 
 * `PlotBDTDiscriminant.C`
 
-* `PlotAll()`
+`PlotAll()`
 
 ${your_directory}/H2aa_2mu2tau/${year}/Inputs/Bkgd_Validation/
 
