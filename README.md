@@ -81,7 +81,6 @@ int main(int argc, char *argv[])
 The names of the config parameters were created to be self-explanatory.
 
 In **data** the year and the json file with the certified lumisections must be specified, e.g.
-
 ```
 ...
 IsData = true
@@ -93,7 +92,7 @@ jsonFile = Cert_271036-284044_13TeV_ReReco_07Aug2017_Collisions16_JSON.json
 
 #### Event loop
 
-The event loop starts like this
+The event loop starts like this:
 ```cpp
 for (int iCand = 0; iCand < numberOfCandidates; iCand++)
 		{
@@ -109,7 +108,7 @@ Generator event weights in MC and JSON certified lumisection selections in data 
 
 ##### Veto on events with at leat one b-tagged jet
 
-A line in the configuration file defines the working point to be used for the b-tagging
+A line in the configuration file defines the working point to be used for the b-tagging:
 
 ```
 btagCut = 0.6321
@@ -119,7 +118,7 @@ A veto on events with at least one b-tagged jet is applied (the deep flavour alg
 
 ##### Muons and tracks
 
-Muon and tracks have its own set of cuts defined in the configuration file
+Muon and tracks have its own set of cuts defined in the configuration file:
 
 ```
 ptGoodMuonCut = 3
@@ -145,10 +144,9 @@ dxyTrkLooseCut = 1.0
 dxyTrkCut = 0.02
 dzTrkLooseCut = 1.0
 dzTrkCut = 0.04
-
 ```
 
-The analysis macro can be executed by issuing the command
+The analysis macro can be executed by issuing the command:
 
 ```bash
 analysis_macro analysisMacro.conf FileListName
@@ -170,7 +168,7 @@ Bash scripts to submit to the NAF condor queue are available:
 ./HTC_qsub_all.sh
 ```
 
-After the jobs are submitted directories called `FileListName_files` arecreated. In each of these directories there will be the following set of files:
+After the jobs are submitted directories called `FileListName_files` are created. In each of these directories there will be the following set of files:
 * `FileListName_$JobNumber` - File containing paths to ntuples stored at TIER-2 DESY
 * `FileListName_$JobNumber.root` - the output root file which contains a set of trees corresponding to the signal region (SR) and Control regions (CRs) filled with the information of relevant variables used for the MVA discrimination
 * `FileListName_$JobNumber.error` - a file that contains information on whether the executable ran with no fatal errors
@@ -183,7 +181,7 @@ After the jobs are submitted directories called `FileListName_files` arecreated.
 ./resubmit.sh
 ```
 
-Once the directory `FileListName_files` is created and all the jobs finished correctly, one can proceed to merge the output root files by issuing the command
+Once the directory `FileListName_files` is created and all the jobs finished correctly, one can proceed to merge the output root files by issuing the command:
 
 ```bash
 ./hadd_all.sh - merge all jobs
