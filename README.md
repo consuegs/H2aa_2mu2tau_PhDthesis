@@ -202,7 +202,7 @@ Merge step to leave only three analysis categories `($category = lep_lep, lep_ha
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/MVA_BDT/`
 
--Merge Trees:
+Merge Trees:
 
 `MergeTrees.C`
 
@@ -301,7 +301,7 @@ Fit diagnostics:
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/DataCards/`
 
-* `PlotLimits.C`
+`PlotLimits.C`
 
 ### Run 2 combination directory 
 
