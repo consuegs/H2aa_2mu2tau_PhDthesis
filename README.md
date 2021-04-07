@@ -173,7 +173,9 @@ After the jobs are submitted directories called `FileListName_files` are created
 * `FileListName_$JobNumber.out` -  a file that contains information on the number of processed events and warnings 
 * `FileListName_$JobNumber.log` -  a file that contains information on CPU, disks, and memory use by the corresponding job
 * `FileListName_$JobNumber.sh` - SCRAM architecture and CMSSW environment for the job
-* `FileListName_$JobNumber.submit` - HTCondor submit configuration file. If the job finished with error it can be resubmited by issuing the command `./resubmit.sh`
+* `FileListName_$JobNumber.submit` - HTCondor submit configuration file. 
+
+If the job finished with error it can be resubmited by issuing the command `./resubmit.sh`
 
 Once the directory `FileListName_files` is created and all the jobs finished correctly, one can proceed to merge the output root files by issuing the command:
 
@@ -336,23 +338,21 @@ Description of the benchmark models and the macros can be found in the following
 
 * First create ntuple out of .dat file provided by the theoretists, which contains: type of the 2HDM, mass of the pseudoscalar a in GeV, <img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \tau\tau)">, and <img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \mu\mu)">
 
-`Entuplizing.C`
+ `Entuplizing.C`
 
 * Plot the limits on <img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})"> as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">)
 
-
-`PlotExclusion.C`
+ `PlotExclusion.C`
 
 * Plot the limits on <img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})"> as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">
 
-`PlotExclusion3D.C`
+ `PlotExclusion3D.C`
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
 
 * Plot the limits on <img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow m_{Z_{D}}m_{Z_{D}})"> as a function of the mass of the pseudoscalar for Dark Photon model
 
-
-`PlotExclusion.C`
+ `PlotExclusion.C`
 
 If further clarifications are needed please contact: [sandra.consuegra.rodriguez@desy.de](sandra.consuegra.rodriguez@desy.de), [sandra.consuegra.rodriguez@cern.ch](sandra.consuegra.rodriguez@cern.ch)
 
