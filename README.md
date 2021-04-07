@@ -74,7 +74,7 @@ The configuration `.conf` file passes general information to initialise the main
 ```cpp
 int main(int argc, char *argv[])
 {
-// analysis code
+	// analysis code
 }
 ...   
 ```
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 The names of the config parameters were created to be self-explanatory.
 
 In **data** the year and the json file with the certified lumisections must be specified, e.g.
-```
+```ini
 ...
 IsData = true
 year = 2016
@@ -96,11 +96,11 @@ jsonFile = Cert_271036-284044_13TeV_ReReco_07Aug2017_Collisions16_JSON.json
 The event loop starts like this:
 ```cpp
 for (int iCand = 0; iCand < numberOfCandidates; iCand++)
-		{
-		tree_->GetEntry(iCand);
-	    events++;
-        // apply selection criteria
-        } 
+{
+	tree_->GetEntry(iCand);
+	events++;
+	// apply selection criteria
+}
 ```
 where the events are read from the ntuple files. The predefined selection cuts summarized in the configuration file are read and applied to the event within the event loop. 
 Generator event weights in MC and JSON certified lumisection selections in data are also considered.
@@ -119,7 +119,7 @@ A veto on events with at least one b-tagged jet is applied (the deep flavour alg
 
 Muon and tracks have its own set of cuts defined in the configuration file:
 
-```
+```ini
 ptGoodMuonCut = 3
 ptIsoMuonCut = 25
 etaMuonCut = 2.4
@@ -223,15 +223,11 @@ Merge step to leave only three analysis categories (lep_lep, lep_had, and had_ha
 
 -The vales of the parameters of the fit are stored as a function of the generated mass points
 
-Function Output created
-
-GetFittingPar() Parameters_ForInterpolation.root
+`GetFittingPar()` `Parameters_ForInterpolation.root`
 
 -An interpolation procedure is used to determine the value of each parameter for a step of 0.2 GeV and, with this, the corresponding 4-dimensional pdfs are generated
 
-Function Output created
-
-Wspacewrite() Workspace_Interpolation.root
+`Wspacewrite()` `Workspace_Interpolation.root`
 
 `$category = lep_lep, lep_had, had_had`
 
@@ -256,13 +252,12 @@ Interpolation of signal acceptance with 0.2 GeV step
 
 Creation of all the datacards for limit computation using the files above as input
 
-All the steps mentioned above are performed automatically with RunAllInputs()
+All the steps mentioned above are performed automatically with `RunAllInputs()`
 
 * `CreateInputs.C`
 
-Function Output created
 
-RunAllInputs() `SUSY*_BDTOutput_M-.root` and `SingleMuon_BDTOutput_M-*.root` with the BDT output histograms
+`RunAllInputs()` `SUSY*_BDTOutput_M-.root` and `SingleMuon_BDTOutput_M-*.root` with the BDT output histograms
 
 Option of submitting this time consuming step to condor with:
 
@@ -301,8 +296,6 @@ or submit to condor
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Signal_Validation/`
 
 * `SignalValidation.C`
-
-Function Output created
 
 `GetFittingParVal()` `Parameters_ForValidation.root`
 
@@ -359,7 +352,7 @@ can be found in the following dedicated twiki page:
 
 * `PlotExclusion.C`
 
--Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of $\text{tan}\beta$
+-Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of $tan\beta$
 
 * `PlotExclusion3D.C`
 
@@ -370,6 +363,5 @@ can be found in the following dedicated twiki page:
 * `PlotExclusion.C`
 
 If further clarifications are needed please contact: [sandra.consuegra.rodriguez@desy.de](sandra.consuegra.rodriguez@desy.de), [sandra.consuegra.rodriguez@cern.ch](sandra.consuegra.rodriguez@cern.ch)
-
 
 #### Instructions last updated: 07.04.2021
