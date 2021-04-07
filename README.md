@@ -27,7 +27,7 @@ The Repository can be checked out via:
 git clone https://github.com/consuegs/H2aa_2mu2tau_PhDthesis.git
 ```
 
-Scale factors and efficiencies can be obtained from the [Desy Tau Analyses repository](https://github.com/DesyTau/DesyTauAnalysesRun2_25ns)
+Scale factors and efficiencies can be obtained from [Desy Tau Analyses repository](https://github.com/DesyTau/DesyTauAnalysesRun2_25ns)
 
 For instructions on how to synchronize your area with GitHub for NTuple production, please refer to [Desy Tau Analyses main twiki](https://twiki.cern.ch/twiki/bin/viewauth/CMS/DesyTauAnalysesRun2)
 
@@ -59,7 +59,7 @@ Inspire:
 
 ## Main analysis macro
 
-The main analysis macro (analysis_macro.cpp) is integrated to the Desy Tau Analyses framework and should be compiled from [${CMSSW_BASE}/src/DesyTauAnlalysis/NtupleMaker/bin/](${CMSSW_BASE}/src/DesyTauAnlalysis/NtupleMaker/bin/).
+The main analysis macro `(analysis_macro.cpp)` is integrated to the Desy Tau Analyses framework and should be compiled from `${CMSSW_BASE}/src/DesyTauAnlalysis/NtupleMaker/bin/`.
 
 The macro performs an offline selection of a pair of muons and a pair of tracks after the online selection of events with isolated single muon triggers. A configuration file is used as input. 
 
@@ -168,16 +168,13 @@ Bash scripts to submit to the NAF condor queue are available:
 ```
 
 After the jobs are submitted directories called `FileListName_files` are created. In each of these directories the following set of files are created:
-* `FileListName_$JobNumber` - file containing paths to ntuples stored at TIER-2 DESY
-* `FileListName_$JobNumber.root` - the output root file which contains a set of trees corresponding to the signal region (SR) and Control regions (CRs) filled with the information of relevant variables used for the MVA discrimination
+* `FileListName_$JobNumber` - file containing paths to ntuples stored at Tier-2 DESY
+* `FileListName_$JobNumber.root` - the output root file which contains histograms and a set of trees corresponding to the signal region (SR) and Control regions (CRs) filled with the information of relevant variables used for the MVA discrimination
 * `FileListName_$JobNumber.error` - a file that contains information on whether the executable ran with no fatal errors
 * `FileListName_$JobNumber.out` -  a file that contains information on the number of processed events and warnings 
 * `FileListName_$JobNumber.log` -  a file that contains information on CPU, disks, and memory use by the corresponding job
 * `FileListName_$JobNumber.sh` - SCRAM architecture and CMSSW environment for the job
-* `FileListName_$JobNumber.submit` - HTCondor submit configuration file. If the job finished with error it can be resubmited by issuing the command
-```bash
-./resubmit.sh
-```
+* `FileListName_$JobNumber.submit` - HTCondor submit configuration file. If the job finished with error it can be resubmited by issuing the command `./resubmit.sh`
 
 Once the directory `FileListName_files` is created and all the jobs finished correctly, one can proceed to merge the output root files by issuing the command:
 
@@ -201,7 +198,7 @@ Filelists:
 * `${your_directory}/H2aa_2mu2tau_PhDthesis/Run${year}/FileListMaker${year}.sh`
 
 
-Merge step to leave only three analysis categories `($category = lep_lep, lep_had, had_had)` out of the initial 9 categories `(e.g ele_ele, ele_mu, mu_ele, mu_mu for lep_lep)`, defined in analysis_macro.cpp
+Merge step to leave only three analysis categories `($category = lep_lep, lep_had, had_had)` out of the initial 9 categories `(e.g ele_ele, ele_mu, mu_ele, mu_mu for lep_lep)`, defined in `analysis_macro.cpp`
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/MVA_BDT/`
 
@@ -215,65 +212,64 @@ Merge step to leave only three analysis categories `($category = lep_lep, lep_ha
 
 ### Interpolation procedure
 
-* `ForInterpolation.C:`
+`ForInterpolation.C:`
 
--For each generated mass point there are 4 discriminating variables assumed to be uncorrelated. An analytic function is associated to each of the 4 distributions and a MLF is performed to determine the optimal parameters
+* For each generated mass point there are 4 discriminating variables assumed to be uncorrelated. An analytic function is associated to each of the 4 distributions and a MLF is performed to determine the optimal parameters
 
--The procedure is repeated for each of the generated mass points per category
+* The procedure is repeated for each of the generated mass points per category
 
--The vales of the parameters of the fit are stored as a function of the generated mass points
+* The vales of the parameters of the fit are stored as a function of the generated mass points
 
 `GetFittingPar()` `Parameters_ForInterpolation.root`
 
--An interpolation procedure is used to determine the value of each parameter for a step of 0.2 GeV and, with this, the corresponding 4-dimensional pdfs are generated
+* An interpolation procedure is used to determine the value of each parameter for a step of 0.2 GeV and, with this, the corresponding 4-dimensional pdfs are generated
 
 `Wspacewrite()` `Workspace_Interpolation.root`
 
--All signal samples are generated with toys and the training `(trainBDT_$category.py)` is performed independently for each mass point and category
+* All signal samples are generated with toys and the training `(trainBDT_$category.py)` is performed independently for each mass point and category
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/MVA_BDT/`
 
-set environment of CMSSW 8_1_0
+set environment of `CMSSW_8_1_0`
 
 
 #### BDT training
 
--Train the BDT executing file:
+* Train the BDT executing file:
 
-* `TrainAll.sh`
+`TrainAll.sh`
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/`
 
-Classification of data is performed with the weight files produced in the training. The output of this step are root files called `SUSY*_BDTOutput_M-.root` and `SingleMuon_BDTOutput_M-*.root` containing the BDT output histograms
+* Classification of data is performed with the weight files produced in the training. The output of this step are root files called `SUSY*_BDTOutput_M-.root` and `SingleMuon_BDTOutput_M-*.root` containing the BDT output histograms
 
-Interpolation of signal acceptance with 0.2 GeV step
+* Interpolation of signal acceptance with 0.2 GeV step
 
-Creation of all the datacards for limit computation using the files above as input
+* Creation of all the datacards for limit computation using the files above as input
 
 All the steps mentioned above are performed automatically with `RunAllInputs()`
 
-* `CreateInputs.C`
+`CreateInputs.C`
 
-
-`RunAllInputs()` `SUSY*_BDTOutput_M-.root` and `SingleMuon_BDTOutput_M-*.root` with the BDT output histograms
+`RunAllInputs()`
 
 Option of submitting this time consuming step to condor with:
 
-* `SubmitCreateInputs.sh`
+`SubmitCreateInputs.sh`
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/DataCards/`
 
--Run combine tool locally:
+* Run combine tool locally:
 
-* `run_combine.sh`
+`run_combine.sh`
 
 or submit to condor
 
-* `SubmitRunCombine.sh`
+`SubmitRunCombine.sh`
 
--Fit diagnostics:
+* Fit diagnostics:
 
-* `Fitting.sh`
+`Fitting.sh`
 
 ### Main plotting macros 
 
@@ -309,17 +305,17 @@ or submit to condor
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Run2Combination/`
 
--Script to copy the datacards from 2016, 2017, and 2018 folders:
+* Script to copy the datacards from 2016, 2017, and 2018 folders:
 
-* `CopyAll.sh`
+`CopyAll.sh`
 
 #### Run combine tool:
 
-* `run_combine.sh`
+`run_combine.sh`
 
 #### Limits:
 
-* `PlotLimits.C`
+`PlotLimits.C`
 
 ### Computation of Trk Iso SF 
 
@@ -340,33 +336,33 @@ can be found in the following dedicated twiki page:
 
 #### Brief workflow:
 
--First create ntuple out of .dat file provided by the theoretists, which contains: type of the 2HDM, mass of the pseudoscalar a in GeV, 
-<img src="https://render.githubusercontent.com/render/math?math=\Large \mathcal{B}(a\rightarrow \tau\tau)">, and
-<img src="https://render.githubusercontent.com/render/math?math=\Large \mathcal{B}(a\rightarrow \mu\mu)">
+* First create ntuple out of .dat file provided by the theoretists, which contains: type of the 2HDM, mass of the pseudoscalar a in GeV, 
+<img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \tau\tau)">, and
+<img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \mu\mu)">
 
-* `Entuplizing.C`
+`Entuplizing.C`
 
--Plot the limits on
-<img src="https://render.githubusercontent.com/render/math?math=\Large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
-as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\Large \beta">)
+* Plot the limits on
+<img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
+as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">)
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
 
-* `PlotExclusion.C`
+`PlotExclusion.C`
 
--Plot the limits on 
-<img src="https://render.githubusercontent.com/render/math?math=\Large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
- as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tan<img src="https://render.githubusercontent.com/render/math?math=\Large \beta">
+* Plot the limits on 
+<img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
+ as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">
 
-* `PlotExclusion3D.C`
+`PlotExclusion3D.C`
 
--Plot the limits on 
-<img src="https://render.githubusercontent.com/render/math?math=\Large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow m_{Z_{D}}m_{Z_{D}})">
+* Plot the limits on 
+<img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow m_{Z_{D}}m_{Z_{D}})">
  as a function of the mass of the pseudoscalar for Dark Photon model
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
 
-* `PlotExclusion.C`
+`PlotExclusion.C`
 
 If further clarifications are needed please contact: [sandra.consuegra.rodriguez@desy.de](sandra.consuegra.rodriguez@desy.de), [sandra.consuegra.rodriguez@cern.ch](sandra.consuegra.rodriguez@cern.ch)
 
