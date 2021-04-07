@@ -74,6 +74,7 @@ The configuration `.conf` file passes general information to initialise the main
 ```cpp
 int main(int argc, char *argv[])
 {
+// analysis code
 }
 ...   
 ```
@@ -96,8 +97,8 @@ The event loop starts like this:
 ```cpp
 for (int iCand = 0; iCand < numberOfCandidates; iCand++)
 		{
-			tree_->GetEntry(iCand);
-			events++;
+		tree_->GetEntry(iCand);
+	    events++;
         // apply selection criteria
         } 
 ```
@@ -193,16 +194,16 @@ Once the directory `FileListName_files` is created and all the jobs finished cor
 
 $year directory:
 
-* `${your_directory}/H2aa_2mu2tau/Run$year/`
+* `${your_directory}/H2aa_2mu2tau_PhDthesis/Run$year/`
 
 Filelists:
 
-* `${your_directory}/H2aa_2mu2tau/Run${year}/FileListMaker${year}.sh`
+* `${your_directory}/H2aa_2mu2tau_PhDthesis/Run${year}/FileListMaker${year}.sh`
 
 
 Merge step to leave only three analysis categories (lep_lep, lep_had, and had_had) out of the initial 9 categories (e.g ele_ele, ele_mu, mu_ele, mu_mu for lep_lep), defined in analysis_macro.cpp
 
-`${your_directory}/H2aa_2mu2tau/${year}/MVA_BDT/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/MVA_BDT/`
 
 -Merge Trees:
 
@@ -234,9 +235,9 @@ Wspacewrite() Workspace_Interpolation.root
 
 `$category = lep_lep, lep_had, had_had`
 
--All signal samples are generated with toys and the training (trainBDT_$category.py) is performed independently for each mass point and category
+-All signal samples are generated with toys and the training `(trainBDT_$category.py)` is performed independently for each mass point and category
 
-`${your_directory}/H2aa_2mu2tau/${year}/MVA_BDT/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/MVA_BDT/`
 
 set environment of CMSSW 8_1_0
 
@@ -247,7 +248,7 @@ set environment of CMSSW 8_1_0
 
 * `TrainAll.sh`
 
-`${your_directory}/H2aa_2mu2tau/${year}/Inputs/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/`
 
 Classification of data is performed with the weight files produced in the training. The output of this step are root files called `SUSY*_BDTOutput_M-.root` and `SingleMuon_BDTOutput_M-*.root` containing the BDT output histograms
 
@@ -267,7 +268,7 @@ Option of submitting this time consuming step to condor with:
 
 * `SubmitCreateInputs.sh`
 
-`${your_directory}/H2aa_2mu2tau/${year}/Inputs/DataCards/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/DataCards/`
 
 -Run combine tool locally:
 
@@ -283,7 +284,7 @@ or submit to condor
 
 ### Main plotting macros 
 
-`${your_directory}/H2aa_2mu2tau/${year}/Inputs/Final_Discriminant/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Final_Discriminant/`
 
 #### Final discriminant (BDT output):
 
@@ -291,31 +292,31 @@ or submit to condor
 
 `PlotAll()`
 
-`${your_directory}/H2aa_2mu2tau/${year}/Inputs/Bkgd_Validation/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Bkgd_Validation/`
 
  #### Validation of Background Model:
 
 * `BkgdValidation.C`
 
-`${your_directory}/H2aa_2mu2tau/${year}/Inputs/Signal_Validation/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Signal_Validation/`
 
 * `SignalValidation.C`
 
 Function Output created
 
-GetFittingParVal() Parameters_ForValidation.root
+`GetFittingParVal()` `Parameters_ForValidation.root`
 
-Validation() Validation/
+`Validation()` Validation/
 
 ### Limits:
 
-`${your_directory}/H2aa_2mu2tau/${year}/Inputs/DataCards/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/DataCards/`
 
 * `PlotLimits.C`
 
 ### Run 2 combination directory 
 
-`${your_directory}/H2aa_2mu2tau/Run2Combination/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Run2Combination/`
 
 -Script to copy the datacards from 2016, 2017, and 2018 folders:
 
@@ -333,13 +334,13 @@ Validation() Validation/
 
 [H->tau tau meeting (16.12.2019)-Trk isolation SF](https://indico.desy.de/indico/event/24401/)
 
-`${your_directory}/H2aa_2mu2tau/${year}/TrkIso_SF_ZTT/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/TrkIso_SF_ZTT/`
 
 ### Interpretation of results in the context of the 2HDM+S and Dark Photon models 
 
 Description of the benchmark models and the macros in:
 
-`${your_directory}/H2aa_2mu2tau/Interpretation/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/`
 
 can be found in the following dedicated twiki page:
 
@@ -352,23 +353,23 @@ can be found in the following dedicated twiki page:
 
 * `Entuplizing.C`
 
--Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tangent beta)
+-Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of $\text{tan}\beta$)
 
-`${your_directory}/H2aa_2mu2tau/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
 
 * `PlotExclusion.C`
 
--Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tangent beta
+-Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of $\text{tan}\beta$
 
 * `PlotExclusion3D.C`
 
 -Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for Dark Photon model
 
-`${your_directory}/H2aa_2mu2tau/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
 
 * `PlotExclusion.C`
 
 If further clarifications are needed please contact: [sandra.consuegra.rodriguez@desy.de](sandra.consuegra.rodriguez@desy.de), [sandra.consuegra.rodriguez@cern.ch](sandra.consuegra.rodriguez@cern.ch)
 
 
-#### Instructions last updated: 06.04.2021
+#### Instructions last updated: 07.04.2021
