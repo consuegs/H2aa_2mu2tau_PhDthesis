@@ -75,8 +75,7 @@ The configuration `.conf` file passes general information to initialise the main
 int main(int argc, char *argv[])
 {
 	// analysis code
-}
-...   
+}   
 ```
 
 The names of the config parameters were created to be self-explanatory.
@@ -235,7 +234,7 @@ set environment of `CMSSW_8_1_0`
 
 #### BDT training
 
-* Train the BDT executing file:
+Train the BDT executing file:
 
 `TrainAll.sh`
 
@@ -247,11 +246,9 @@ set environment of `CMSSW_8_1_0`
 
 * Creation of all the datacards for limit computation using the files above as input
 
-All the steps mentioned above are performed automatically with `RunAllInputs()`
+All the steps mentioned above are performed automatically with
 
-`CreateInputs.C`
-
-`RunAllInputs()`
+`CreateInputs.C` `RunAllInputs()`
 
 Option of submitting this time consuming step to condor with:
 
@@ -273,29 +270,30 @@ Fit diagnostics:
 
 ### Main plotting macros 
 
-`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Final_Discriminant/`
-
 #### Final discriminant (BDT output):
+
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Final_Discriminant/`
 
 `PlotBDTDiscriminant.C`
 
 `PlotAll()`
 
-`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Bkgd_Validation/`
-
 #### Validation of Background Model:
+
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Bkgd_Validation/`
 
 `BkgdValidation.C`
 
-`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Signal_Validation/`
 
  #### Validation of Signal Model:
+ 
+`${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Signal_Validation/`
 
 `SignalValidation.C`
 
 `GetFittingParVal()` `Parameters_ForValidation.root`
 
-`Validation()` Validation/
+`Validation()` `Validation/`
 
 ### Limits:
 
@@ -325,18 +323,16 @@ Script to copy the datacards from 2016, 2017, and 2018 folders:
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/TrkIso_SF_ZTT/`
 
-### Interpretation of results in the context of the 2HDM+S and Dark Photon models 
+### Interpretation of results in the context of the 2HDM+S and Dark Photon models
 
-Description of the benchmark models and the macros in:
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/` 
 
-`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/`
-
-can be found in the following dedicated twiki page:
-
-[HaaInterpretations](https://twiki.cern.ch/twiki/bin/view/CMS/HaaInterpretations)
+Description of the benchmark models and the macros can be found in the following dedicated twiki page: [HaaInterpretations](https://twiki.cern.ch/twiki/bin/view/CMS/HaaInterpretations)
 
 
 #### Brief workflow:
+
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
 
 * First create ntuple out of .dat file provided by the theoretists, which contains: type of the 2HDM, mass of the pseudoscalar a in GeV, <img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \tau\tau)">, and <img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \mu\mu)">
 
@@ -344,7 +340,6 @@ can be found in the following dedicated twiki page:
 
 * Plot the limits on <img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})"> as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">)
 
-`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
 
 `PlotExclusion.C`
 
@@ -352,9 +347,10 @@ can be found in the following dedicated twiki page:
 
 `PlotExclusion3D.C`
 
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
+
 * Plot the limits on <img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow m_{Z_{D}}m_{Z_{D}})"> as a function of the mass of the pseudoscalar for Dark Photon model
 
-`${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
 
 `PlotExclusion.C`
 
