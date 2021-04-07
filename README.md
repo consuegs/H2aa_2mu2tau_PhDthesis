@@ -191,11 +191,11 @@ Once the directory `FileListName_files` is created and all the jobs finished cor
 
 $year directory:
 
-* `${your_directory}/H2aa_2mu2tau_PhDthesis/Run$year/`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Run$year/`
 
 Filelists:
 
-* `${your_directory}/H2aa_2mu2tau_PhDthesis/Run${year}/FileListMaker${year}.sh`
+`${your_directory}/H2aa_2mu2tau_PhDthesis/Run${year}/FileListMaker${year}.sh`
 
 
 Merge step to leave only three analysis categories `($category = lep_lep, lep_had, had_had)` out of the initial 9 categories `(e.g ele_ele, ele_mu, mu_ele, mu_mu for lep_lep)`, defined in `analysis_macro.cpp`
@@ -204,7 +204,7 @@ Merge step to leave only three analysis categories `($category = lep_lep, lep_ha
 
 -Merge Trees:
 
-* `MergeTrees.C`
+`MergeTrees.C`
 
 `MergeAll()`
 
@@ -226,7 +226,7 @@ Merge step to leave only three analysis categories `($category = lep_lep, lep_ha
 
 `Wspacewrite()` `Workspace_Interpolation.root`
 
-* All signal samples are generated with toys and the training `(trainBDT_$category.py)` is performed independently for each mass point and category
+All signal samples are generated with toys and the training `(trainBDT_$category.py)` is performed independently for each mass point and category
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/MVA_BDT/`
 
@@ -259,7 +259,7 @@ Option of submitting this time consuming step to condor with:
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/DataCards/`
 
-* Run combine tool locally:
+Run combine tool locally:
 
 `run_combine.sh`
 
@@ -267,7 +267,7 @@ or submit to condor
 
 `SubmitRunCombine.sh`
 
-* Fit diagnostics:
+Fit diagnostics:
 
 `Fitting.sh`
 
@@ -277,19 +277,21 @@ or submit to condor
 
 #### Final discriminant (BDT output):
 
-* `PlotBDTDiscriminant.C`
+`PlotBDTDiscriminant.C`
 
 `PlotAll()`
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Bkgd_Validation/`
 
- #### Validation of Background Model:
+#### Validation of Background Model:
 
-* `BkgdValidation.C`
+`BkgdValidation.C`
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/Inputs/Signal_Validation/`
 
-* `SignalValidation.C`
+ #### Validation of Signal Model:
+
+`SignalValidation.C`
 
 `GetFittingParVal()` `Parameters_ForValidation.root`
 
@@ -305,7 +307,7 @@ or submit to condor
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Run2Combination/`
 
-* Script to copy the datacards from 2016, 2017, and 2018 folders:
+Script to copy the datacards from 2016, 2017, and 2018 folders:
 
 `CopyAll.sh`
 
@@ -336,29 +338,21 @@ can be found in the following dedicated twiki page:
 
 #### Brief workflow:
 
-* First create ntuple out of .dat file provided by the theoretists, which contains: type of the 2HDM, mass of the pseudoscalar a in GeV, 
-<img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \tau\tau)">, and
-<img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \mu\mu)">
+* First create ntuple out of .dat file provided by the theoretists, which contains: type of the 2HDM, mass of the pseudoscalar a in GeV, <img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \tau\tau)">, and <img src="https://render.githubusercontent.com/render/math?math=\large \mathcal{B}(a\rightarrow \mu\mu)">
 
 `Entuplizing.C`
 
-* Plot the limits on
-<img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
-as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">)
+* Plot the limits on <img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})"> as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">)
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
 
 `PlotExclusion.C`
 
-* Plot the limits on 
-<img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
- as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">
+* Plot the limits on <img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})"> as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tan<img src="https://render.githubusercontent.com/render/math?math=\large \beta">
 
 `PlotExclusion3D.C`
 
-* Plot the limits on 
-<img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow m_{Z_{D}}m_{Z_{D}})">
- as a function of the mass of the pseudoscalar for Dark Photon model
+* Plot the limits on <img src="https://render.githubusercontent.com/render/math?math=\large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow m_{Z_{D}}m_{Z_{D}})"> as a function of the mass of the pseudoscalar for Dark Photon model
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
 
