@@ -346,14 +346,15 @@ can be found in the following dedicated twiki page:
 
 * `Entuplizing.C`
 
--Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of $\text{tan}\beta$)
+-Plot the limits on
+<img src="https://render.githubusercontent.com/render/math?math=(\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
+as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\beta">)
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
 
 * `PlotExclusion.C`
 
--Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of 
-<img src="https://render.githubusercontent.com/render/math?math=\beta">
+-Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tan<img src="https://render.githubusercontent.com/render/math?math=\beta">
 
 * `PlotExclusion3D.C`
 
