@@ -69,12 +69,12 @@ Configuration files are available separately for data, background MC, and signal
 * [analysisMacro_ggH.conf](Run2016/analysisMacro_ggH.conf)
 
 
-The configuration `.conf` file passes general information to initialise the main function
+The configuration `.conf` file passes general information to initialise the main function:
 
 ```cpp
 int main(int argc, char *argv[])
 {
-
+}
 ...   
 ```
 
@@ -96,14 +96,12 @@ The event loop starts like this:
 ```cpp
 for (int iCand = 0; iCand < numberOfCandidates; iCand++)
 		{
-
 			tree_->GetEntry(iCand);
-
 			events++;
         // apply selection criteria
         } 
 ```
-where the events are read from the ntuple files and a set of selection criteria are applied. The predefined selection cuts summarized in the configuration file are read and applied to the event within the event loop. 
+where the events are read from the ntuple files. The predefined selection cuts summarized in the configuration file are read and applied to the event within the event loop. 
 Generator event weights in MC and JSON certified lumisection selections in data are also considered.
 
 ##### Veto on events with at leat one b-tagged jet
@@ -234,7 +232,7 @@ Function Output created
 
 Wspacewrite() Workspace_Interpolation.root
 
-$category = lep_lep, lep_had, had_had
+`$category = lep_lep, lep_had, had_had`
 
 -All signal samples are generated with toys and the training (trainBDT_$category.py) is performed independently for each mass point and category
 
