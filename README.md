@@ -201,7 +201,7 @@ Filelists:
 * `${your_directory}/H2aa_2mu2tau_PhDthesis/Run${year}/FileListMaker${year}.sh`
 
 
-Merge step to leave only three analysis categories (lep_lep, lep_had, and had_had) out of the initial 9 categories (e.g ele_ele, ele_mu, mu_ele, mu_mu for lep_lep), defined in analysis_macro.cpp
+Merge step to leave only three analysis categories `($category = lep_lep, lep_had, had_had)` out of the initial 9 categories `(e.g ele_ele, ele_mu, mu_ele, mu_mu for lep_lep)`, defined in analysis_macro.cpp
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/${year}/MVA_BDT/`
 
@@ -228,8 +228,6 @@ Merge step to leave only three analysis categories (lep_lep, lep_had, and had_ha
 -An interpolation procedure is used to determine the value of each parameter for a step of 0.2 GeV and, with this, the corresponding 4-dimensional pdfs are generated
 
 `Wspacewrite()` `Workspace_Interpolation.root`
-
-`$category = lep_lep, lep_had, had_had`
 
 -All signal samples are generated with toys and the training `(trainBDT_$category.py)` is performed independently for each mass point and category
 
@@ -342,23 +340,29 @@ can be found in the following dedicated twiki page:
 
 #### Brief workflow:
 
--First create ntuple out of .dat file provided by the theoretists, which contains: type of the 2HDM, mass of the pseudoscalar a in GeV, BR(a -> tautau), and BR(a -> mumu)
+-First create ntuple out of .dat file provided by the theoretists, which contains: type of the 2HDM, mass of the pseudoscalar a in GeV, 
+<img src="https://render.githubusercontent.com/render/math?math=\Large \mathcal{B}(a\rightarrow \tau\tau)">, and
+<img src="https://render.githubusercontent.com/render/math?math=\Large \mathcal{B}(a\rightarrow \mu\mu)">
 
 * `Entuplizing.C`
 
 -Plot the limits on
-<img src="https://render.githubusercontent.com/render/math?math=(\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
-as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\beta">)
+<img src="https://render.githubusercontent.com/render/math?math=\Large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
+as a function of the mass of the pseudoscalar for each type of 2HDM+1S model (for an specific value of tan<img src="https://render.githubusercontent.com/render/math?math=\Large \beta">)
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_2HDM_1S/`
 
 * `PlotExclusion.C`
 
--Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tan<img src="https://render.githubusercontent.com/render/math?math=\beta">
+-Plot the limits on 
+<img src="https://render.githubusercontent.com/render/math?math=\Large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow a_{1}a_{1})">
+ as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of tan<img src="https://render.githubusercontent.com/render/math?math=\Large \beta">
 
 * `PlotExclusion3D.C`
 
--Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for Dark Photon model
+-Plot the limits on 
+<img src="https://render.githubusercontent.com/render/math?math=\Large (\sigma_{h}/\sigma_\text{SM}) \cdot \mathcal{B}(h\rightarrow m_{Z_{D}}m_{Z_{D}})">
+ as a function of the mass of the pseudoscalar for Dark Photon model
 
 `${your_directory}/H2aa_2mu2tau_PhDthesis/Interpretation/Exclusion_Limits_2mu2tau_DarkPhoton/`
 
