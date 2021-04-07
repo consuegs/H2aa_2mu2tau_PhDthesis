@@ -352,7 +352,8 @@ can be found in the following dedicated twiki page:
 
 * `PlotExclusion.C`
 
--Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of <img src="https://render.githubusercontent.com/render/math?math=\text{tan}\beta">
+-Plot the limits on sigma/sigma_{SM}* BR(h->aa) as a function of the mass of the pseudoscalar for each type of 2HDM+1S model as a function of 
+<img src="https://render.githubusercontent.com/render/math?math=\text{tan}\beta">
 
 * `PlotExclusion3D.C`
 
