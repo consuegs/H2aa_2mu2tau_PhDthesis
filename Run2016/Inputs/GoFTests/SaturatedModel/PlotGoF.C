@@ -39,8 +39,8 @@ void PlotGoF(TString massf = "5", TString trk = "_lep_had", bool showPValue = tr
 
 	TCanvas *c = new TCanvas("c", "c", 900, 900);
 	c->SetLeftMargin(0.12);
-    c->SetRightMargin(0.07);
-    c->SetBottomMargin(0.12);
+        c->SetRightMargin(0.07);
+        c->SetBottomMargin(0.12);
 	c->SetTicks();
 	
 	c->cd();
@@ -95,8 +95,8 @@ void PlotGoF(TString massf = "5", TString trk = "_lep_had", bool showPValue = tr
 	leg->AddEntry(arrow, "Observed", "l");
 	leg->Draw();
 
-    TLatex latex;
-    latex.SetTextSize(0.035);
+        TLatex latex;
+        latex.SetTextSize(0.035);
 	latex.DrawLatex(0.8, 1.02 * Histo->GetMaximum(), "#color[4]{" + trk + "} Channel");
 
 	writeExtraText = true;
@@ -124,7 +124,7 @@ void PlotAll()
 
 	TString mpointsD[19] = { "3.6", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21" };
 
-    int nTrackCat = 3;
+        int nTrackCat = 3;
 	TString TrackCat[] = { "_lep_lep", "_lep_had", "_had_had" };
 	
 	for (int isample = 0; isample < nSamples; isample++)

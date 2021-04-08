@@ -54,7 +54,7 @@ void PlotLimits(bool blindData = false, char *fileList = "limits")
 		mA[counter] = float(MH);
 		minus2R[counter] = float(LIMIT);
 
-		    //std::cout << mA[counter] << counter << std::endl;
+		//std::cout << mA[counter] << counter << std::endl;
 
 		tree->GetEntry(1);
 		minus1R[counter] = float(LIMIT);
@@ -101,7 +101,7 @@ void PlotLimits(bool blindData = false, char *fileList = "limits")
 
 	f_out->Write();
 
-    double zeros[counter];
+        double zeros[counter];
     
 	for (int i = 0; i < counter; ++i)
 	{
@@ -134,12 +134,11 @@ void PlotLimits(bool blindData = false, char *fileList = "limits")
 	outerBand->SetFillColor(kOrange);
 	outerBand->SetLineColor(0);
 
-    ////// Plotting /////
-    
-    TCanvas *canv = MakeCanvas("canv", "histograms", 900, 900);
-    canv->SetLeftMargin(0.15);
-    canv->SetRightMargin(0.1);
-    canv->SetBottomMargin(0.15);
+        ////// Plotting /////  
+        TCanvas *canv = MakeCanvas("canv", "histograms", 900, 900);
+        canv->SetLeftMargin(0.15);
+        canv->SetRightMargin(0.1);
+        canv->SetBottomMargin(0.15);
 	canv->SetTicks();
 	
 	TH1F *frame = NULL;
@@ -161,15 +160,14 @@ void PlotLimits(bool blindData = false, char *fileList = "limits")
 	frame->GetYaxis()->SetLabelSize(0.04);
 	frame->GetXaxis()->SetTickLength(0.2);
 	frame->GetYaxis()->SetTickLength(0.2);
-    frame->GetXaxis()->SetTickSize(0.02);
-    frame->GetYaxis()->SetTickSize(0.02);
+        frame->GetXaxis()->SetTickSize(0.02);
+        frame->GetYaxis()->SetTickSize(0.02);
     
 	frame->Draw();
 	outerBand->Draw("3same");
 	innerBand->Draw("3same");
 	expG->Draw("lsame");
 	if (!blindData) obsG->Draw("lpsame");
-
 
 	TLegend *leg = new TLegend(0.25, 0.6, 0.60, 0.84);
 	leg->SetFillColor(0);
@@ -186,12 +184,11 @@ void PlotLimits(bool blindData = false, char *fileList = "limits")
 	writeExtraText = false;
 	CMS_lumi(canv, 4, 33);
 	
-    TLatex latex;
-    latex.SetTextFont(42);
-    latex.SetTextSize(0.035);
-    latex.DrawLatex(3.6,2.01,"#times 10^{-3}");
-	
-      
+        TLatex latex;
+        latex.SetTextFont(42);
+        latex.SetTextSize(0.035);
+        latex.DrawLatex(3.6,2.01,"#times 10^{-3}");
+	 
 	canv->RedrawAxis();
 
 	leg->Draw();

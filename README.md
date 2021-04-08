@@ -5,7 +5,7 @@
 `Search for light bosons in the final state with muons and tau leptons with CMS Run II data`
 
 
-See also the code documentation [Doxygen](https://www.desy.de/~consuegs/Analyses/Hbb_MSMSM/doxygen/html/index.html) page (in costruction :construction:)
+See also the code documentation [Doxygen](https://www.desy.de/~consuegs/Analyses/Hbb_MSMSM/doxygen/html/index.html) page (in construction :construction:)
 
 
 This repository contains only specific code to be used for the analysis
@@ -356,4 +356,4 @@ Description of the benchmark models and the macros can be found in the following
 
 If further clarifications are needed please contact: [sandra.consuegra.rodriguez@desy.de](sandra.consuegra.rodriguez@desy.de), [sandra.consuegra.rodriguez@cern.ch](sandra.consuegra.rodriguez@cern.ch)
 
-#### Instructions last updated: 07.04.2021
+#### Instructions last updated: 08.04.2021

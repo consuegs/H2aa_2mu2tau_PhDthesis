@@ -333,9 +333,9 @@ void BDTClassificationData(TString mass = "15p0")
 	TString trackCat[] = { "_lep_lep", "_lep_had", "_had_had" };
 
 	///////////////////////////////// Region Strings	////////////////////////////////////////////
-    int nRegions = 7;
+        int nRegions = 7;
 
-    TString regions[7] = {"NN00", "NNNN", "00NN", "00SemiIso", "SoftIso", "00SoftIso", "Sel"};
+        TString regions[7] = {"NN00", "NNNN", "00NN", "00SemiIso", "SoftIso", "00SoftIso", "Sel"};
 
 	std::cout << std::endl << std::endl;
 	std::cout << "                    Start BDT Classification" << std::endl;
@@ -624,10 +624,10 @@ void InputsDataCards(double mass = 15.0, TString trackCat = "_lep_had")
 	TGraphErrors * gr;
 	fileAcc->GetObject("Acceptance_vs_Mass" + trackCat, gr);
 
-    TString BkgdModel, BkgdModel_unc;
-    if (trackCat == "_lep_lep") {BkgdModel = "NNNN"; BkgdModel_unc = "Sel_SS";}
-    else if (trackCat == "_lep_had") {BkgdModel = "NNNN"; BkgdModel_unc = "Sel_SS";}
-    else  {BkgdModel = "NNNN"; BkgdModel_unc = "Sel_SS";}
+        TString BkgdModel, BkgdModel_unc;
+        if (trackCat == "_lep_lep") {BkgdModel = "NNNN"; BkgdModel_unc = "Sel_SS";}
+        else if (trackCat == "_lep_had") {BkgdModel = "NNNN"; BkgdModel_unc = "Sel_SS";}
+        else  {BkgdModel = "NNNN"; BkgdModel_unc = "Sel_SS";}
         
 	///// Shape (Nominal)	/////
 	TH1D *hist_Old = (TH1D*) file->Get("MVABDTOutput" + BkgdModel + trackCat + "H");
@@ -728,31 +728,29 @@ void InputsDataCards(double mass = 15.0, TString trackCat = "_lep_had")
 	const char *p = nn.c_str();
 
 	std::ofstream textFile(p);
-    textFile << "imax 1   number of channels" << std::endl;
-    textFile << "jmax *   number of backgrounds" << std::endl;
-    textFile << "kmax *   number of nuisance parameters" << std::endl;
-    textFile << "-----------------" << std::endl;
-    textFile << "observation " << hist_obs->GetSumOfWeights() << std::endl;
-    textFile << "-----------------" << std::endl;
-    textFile << "shapes * * " << BaseName + trackCat + ".root" << "  $PROCESS    $PROCESS_$SYSTEMATIC " << std::endl;
-    textFile << "-----------------" << std::endl;
-    textFile << "bin";
-    textFile << "             haa       haa  "   << std::endl;
-    textFile << "process      ggh       bkgd " << std::endl;
-    textFile << "process       0         1   " << std::endl;
-    textFile << "rate      " <<
-		histGGH->GetSumOfWeights() << "  " <<
-		bkgNorm << std::endl;
-    textFile << "-----------------------------" << std::endl;
-    textFile << "CMS_lumi_2017                           lnN         1.023          -" << std::endl;
-    textFile << "CMS_eff_m_2017                          lnN         1.04           -" << std::endl;
-    textFile << "CMS_trkiso_2017                         lnN         1.18           -" << std::endl;
-    textFile << "CMS_bdtbkg" + trackCat + "_2017        shape         -           1.00" << std::endl; 
-    textFile << "QCDScale_ggH                lnN         1.046/0.933    -" << std::endl;
-    textFile << "PDF_ggh                     lnN         1.032          -" << std::endl;
-    textFile << "bkgNorm" + trackCat + "_2017  rateParam  haa  bkgd  1  [0.5,1.5]" << std::endl;
-    textFile << "* autoMCStats 0" << std::endl;
-    textFile << std::endl;
+        textFile << "imax 1   number of channels" << std::endl;
+        textFile << "jmax *   number of backgrounds" << std::endl;
+        textFile << "kmax *   number of nuisance parameters" << std::endl;
+        textFile << "-----------------" << std::endl;
+        textFile << "observation " << hist_obs->GetSumOfWeights() << std::endl;
+        textFile << "-----------------" << std::endl;
+        textFile << "shapes * * " << BaseName + trackCat + ".root" << "  $PROCESS    $PROCESS_$SYSTEMATIC " << std::endl;
+        textFile << "-----------------" << std::endl;
+        textFile << "bin";
+        textFile << "             haa       haa  "   << std::endl;
+        textFile << "process      ggh       bkgd " << std::endl;
+        textFile << "process       0         1   " << std::endl;
+        textFile << "rate      " << histGGH->GetSumOfWeights() << "  " << bkgNorm << std::endl;
+        textFile << "-----------------------------" << std::endl;
+        textFile << "CMS_lumi_2017                           lnN         1.023          -" << std::endl;
+        textFile << "CMS_eff_m_2017                          lnN         1.04           -" << std::endl;
+        textFile << "CMS_trkiso_2017                         lnN         1.18           -" << std::endl;
+        textFile << "CMS_bdtbkg" + trackCat + "_2017        shape         -           1.00" << std::endl; 
+        textFile << "QCDScale_ggH                lnN         1.046/0.933    -" << std::endl;
+        textFile << "PDF_ggh                     lnN         1.032          -" << std::endl;
+        textFile << "bkgNorm" + trackCat + "_2017  rateParam  haa  bkgd  1  [0.5,1.5]" << std::endl;
+        textFile << "* autoMCStats 0" << std::endl;
+        textFile << std::endl;
 
 	///// Parameter Signal Uncertainties	/////
 
@@ -806,8 +804,8 @@ void InputsDataCards(double mass = 15.0, TString trackCat = "_lep_had")
 
 	fileInputs->Close();
 	file->Close();
-    fileGGH->Close();
-    fileAcc->Close();
+        fileGGH->Close();
+        fileAcc->Close();
 
 	////////////////////////////////////////////////////////////////////////////////////////
 	////////////////*********************END **************************////////////////////
@@ -821,14 +819,14 @@ void CreateInputs(double mass_ini=3.60, double mass_end=21.01)
 	int ntrackCat = 3;
 	TString trackCat[] = { "_lep_lep", "_lep_had", "_had_had" };
 
-	//InterpolateAcceptance();
+	InterpolateAcceptance();
 
 	for (double mass = mass_ini; mass < mass_end; mass += 0.20)	// Loop over masses
 	{
 		TString mass_string = std::to_string(int(mass + 0.1)) + "p" + std::to_string(int(int(mass *10 + 0.1) % 10));
 
-		//BDTClassificationSignal(mass_string);
-		//BDTClassificationData(mass_string);
+		BDTClassificationSignal(mass_string);
+		BDTClassificationData(mass_string);
 
 		for (int icat = 0; icat < ntrackCat; icat++) InputsDataCards(mass, trackCat[icat]);
 	}	// End loop over masses

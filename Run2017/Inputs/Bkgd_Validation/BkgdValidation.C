@@ -22,14 +22,14 @@ void BkgdValidation(TString mass = "15", TString massf = "15", TString trk = "_l
 	if (sideband_1 == "NNNN") legnedstr_1 = "NNNN";
 	if (sideband_1 == "00SoftIso") legnedstr_1 = "00-Soft-Iso";
 	if (sideband_1 == "NN00") legnedstr_1 = "NN00";
-    if (sideband_1 == "Sel_SS") legnedstr_1 = "Same-Sign";
+        if (sideband_1 == "Sel_SS") legnedstr_1 = "Same-Sign";
 
 	if (sideband_2 == "00NN") legnedstr_2 = "00NN";
 	if (sideband_2 == "00SemiIso") legnedstr_2 = "00-Semi-Iso";
 	if (sideband_2 == "NNNN") legnedstr_2 = "NNNN";
 	if (sideband_2 == "00SoftIso") legnedstr_2 = "00-Soft-Iso";
 	if (sideband_2 == "NN00") legnedstr_2 = "NN00";
-    if (sideband_2 == "Sel_SS") legnedstr_2 = "Same-Sign";
+        if (sideband_2 == "Sel_SS") legnedstr_2 = "Same-Sign";
 
 	TFile * file;
 	if (massD < 3.8) file = new TFile("../SingleMuon_BDTOutput_M-3p6.root");

@@ -18,48 +18,48 @@ void Get_Composition(TString HistName = "histWeights_00NN_lep_lepH", TString reg
 	int nMCSamples = 13;
 
 	TString samples[13] = { "WW_13TeV-pythia8",	                // (0)
-		"WZ_13TeV-pythia8",	                                    // (1) 
-		"ZZ_13TeV-pythia8",	                                    // (2)
+		"WZ_13TeV-pythia8",	                                // (1) 
+		"ZZ_13TeV-pythia8",	                                // (2)
 		"WJetsToLNu_13TeV-madgraphMLM",	                        // (3)
 		"ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powheg",	// (4)
 		"ST_t-channel_top_4f_inclusiveDecays_13TeV-powheg", 	// (5)
-		"ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg",	    // (6)
+		"ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg",        // (6)
 		"ST_tW_top_5f_inclusiveDecays_13TeV-powheg",	        // (7)
-		"TT_13TeV-powheg-pythia8",	                            // (8)
-		"DYJetsToLL_M-10to50_13TeV-madgraphMLM",	            // (9)
+		"TT_13TeV-powheg-pythia8",	                        // (8)
+		"DYJetsToLL_M-10to50_13TeV-madgraphMLM",	        // (9)
 		"DYJetsToLL_M-50_13TeV-madgraphMLM",	                // (10)
 		"QCD_Pt-20toInf_MuEnrichedPt15_13TeV",	                // (11)
-		"SUSYGluGluToHToAA_AToMuMu_AToTauTau_M-10"	            // (12)
+		"SUSYGluGluToHToAA_AToMuMu_AToTauTau_M-10"	        // (12)
 	};
 
-	float xsec[13] = {118.7,	// WW   (0)
-		27.57,	// WZ                   (1)
-		12.14,	// ZZ                   (2)
-		61526.7,	// WJets            (3)
-		80.95,	// ST_t-channel_antitop (4)
-		136.02,	// ST_t-channel_top     (5)
-		35.85,	// ST_tW_antitop        (6)
-		35.85,	// ST_tW_top            (7)
-		831.6,	// TTbar                (8)
-		21658,	// DYJetsToLL_M-10to50  (9)
-		6077.22,	// DYJetsToLL_M-50  (10)
-		720648000 * 0.00042,	// QCD  (11)
-		xsecGGH	// ma=10                (12)
+	float xsec[13] = {118.7,	// WW                   (0)
+		27.57,	                // WZ                   (1)
+		12.14,	                // ZZ                   (2)
+		61526.7,	        // WJets                (3)
+		80.95,	                // ST_t-channel_antitop (4)
+		136.02,	                // ST_t-channel_top     (5)
+		35.85,	                // ST_tW_antitop        (6)
+		35.85,	                // ST_tW_top            (7)
+		831.6,	                // TTbar                (8)
+		21658,	                // DYJetsToLL_M-10to50  (9)
+		6077.22,	        // DYJetsToLL_M-50      (10)
+		720648000 * 0.00042,	// QCD                  (11)
+		xsecGGH	                // ma=10                (12)
 	};
 
-	double ngen[13] = { 7982180,	// WW    (0)                   
-		3997571,	// WZ                    (1)                    
-		1988098,	// ZZ                    (2)                     
-		86916455,	// WJets                 (3)
-		38811017,	// ST_t-channel_antitop  (4)
-		67105876,	// ST_t-channel_top      (5)
-		6933094,	// ST_tW_antitop         (6)
-		6952830,	// ST_tW_top             (7)
-		76915549,	// TTbar                 (8)
-		35114961,	// DYJetsToLL_M-10to50   (9) 
-		146280395,	// DYJetsToLL_M-50       (10)
-        1,          // QCD                   (11)
-        1           // ma=10                 (12)
+	double ngen[13] = { 7982180,	// WW                   (0)                   
+		3997571,	        // WZ                   (1)                    
+		1988098,	        // ZZ                   (2)                     
+		86916455,	        // WJets                (3)
+		38811017,	        // ST_t-channel_antitop (4)
+		67105876,	        // ST_t-channel_top     (5)
+		6933094,	        // ST_tW_antitop        (6)
+		6952830,	        // ST_tW_top            (7)
+		76915549,	        // TTbar                (8)
+		35114961,	        // DYJetsToLL_M-10to50  (9) 
+		146280395,	        // DYJetsToLL_M-50      (10)
+                1,                      // QCD                  (11)
+                1                       // ma=10                (12)
 	};
 
 	xsec[11] = xsec[11] *qcdScale;
@@ -97,15 +97,15 @@ void Get_Composition(TString HistName = "histWeights_00NN_lep_lepH", TString reg
 		TH1D *Hist = TH1DtoTH1D(HistOld, nBinsNew, bins, true, "_new_" + samples[isample]);
 
 		TH1D *eventCount = (TH1D*) fileMC->Get("histWeightsH");
-        TH1D *WeightsBTag = (TH1D*) fileMC->Get("histWeightsBTagH");
-        TH1D *WeightsZeroBTag = (TH1D*) fileMC->Get("histWeightsZeroBTagH");
+                TH1D *WeightsBTag = (TH1D*) fileMC->Get("histWeightsBTagH");
+                TH1D *WeightsZeroBTag = (TH1D*) fileMC->Get("histWeightsZeroBTagH");
 
 		float nGen = eventCount->GetSumOfWeights();
 		float norm = xsec[isample] *lumi / nGen;
 
 		//if (isample < 11) norm = xsec[isample] *lumi / ngen[isample];
 
-        norm = norm * WeightsBTag->GetSumOfWeights()/WeightsZeroBTag->GetSumOfWeights();
+                norm = norm * WeightsBTag->GetSumOfWeights()/WeightsZeroBTag->GetSumOfWeights();
 
 		TH1D *tempHist = EWKH;
 

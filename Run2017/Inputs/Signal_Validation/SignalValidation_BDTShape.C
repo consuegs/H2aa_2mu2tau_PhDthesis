@@ -290,7 +290,7 @@ void SignalValidation_BDTShape(float mass = 15,
 
 					HistoUp->Fill(mvavalue);
 				}	// End loop over tree entries
-                HistoUp->Rebin(80);
+                                HistoUp->Rebin(80);
 
 				///////// Shift Down	///////////// 
 				ws->var(Parameters[iparameter])->setVal(ws->var(Parameters[iparameter])->getValV() - ws->var(Parameters[iparameter])->getError());
@@ -350,7 +350,7 @@ void SignalValidation_BDTShape(float mass = 15,
 				
 			}	// End loop over parameters
 
-    HistoInterpolated->Scale(1. / HistoInterpolated->GetSumOfWeights());
+        HistoInterpolated->Scale(1. / HistoInterpolated->GetSumOfWeights());
 	HistoTrue->Scale(1. / HistoTrue->GetSumOfWeights());
 	
 	TH1D *RatioH = (TH1D*) HistoTrue->Clone("RatioH");
@@ -464,7 +464,7 @@ void SignalValidation_BDTShape(float mass = 15,
 	writeExtraText = true;
 	extraText = "Simulation";
 	CMS_lumi(upper, 5, 33);
-    TLatex tex;
+        TLatex tex;
 	tex.DrawLatex(-0.27, 0.61, "#color[4]{" + trackCat + "} Channel");
 
 	if (logY) upper->SetLogy(true);

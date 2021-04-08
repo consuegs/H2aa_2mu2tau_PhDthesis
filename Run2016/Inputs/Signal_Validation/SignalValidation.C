@@ -6,12 +6,12 @@ using namespace RooFit;
 
 void GetFittingParVal()
 {
-    // Silence INFO messages
-    RooMsgService::instance().setGlobalKillBelow(RooFit::FATAL);
-    // Silence additional MINUIT output 
-    RooMsgService::instance().setSilentMode(true);
-    // Silence Info in TCanvas::Print: messages
-    gErrorIgnoreLevel = kWarning;
+        // Silence INFO messages
+        RooMsgService::instance().setGlobalKillBelow(RooFit::FATAL);
+        // Silence additional MINUIT output 
+        RooMsgService::instance().setSilentMode(true);
+        // Silence Info in TCanvas::Print: messages
+        gErrorIgnoreLevel = kWarning;
 
 	//// Mass points	////
 	int nSamples = 18;
@@ -99,7 +99,7 @@ void GetFittingParVal()
 			RooRealVar sigma_G2("sigma_G2", "sigma_G2", Par_4[icategory] *points[isample], Par_4[icategory] *points[isample] - 0.005, Par_4[icategory] *points[isample] + 0.005);
 			RooRealVar frac("frac", "frac", Par_5[icategory]);
 
-            //// For 2 Landau (TrkTrk_DR)	//// 
+                        //// For 2 Landau (TrkTrk_DR)	//// 
 			RooRealVar mean_L1("mean_L1", "mean_L1", Par_6[icategory] *points[isample] + Par_11[icategory], Par_6[icategory] *points[isample] + Par_11[icategory] - 0.015, Par_6[icategory] *points[isample] + Par_11[icategory] + 0.015);
 			RooRealVar sigma_L1("sigma_L1", "sigma_L1", Par_7[icategory] *points[isample] + Par_12[icategory], Par_7[icategory] *points[isample] + Par_12[icategory] - 0.0015, Par_7[icategory] *points[isample] + Par_12[icategory] + 0.0015);
 			RooRealVar mean_G3("mean_G3", "mean_G3", 0);
@@ -231,12 +231,12 @@ void Validation(TString mass = "10")
 {
 
 	gROOT->SetBatch();
-    // Silence INFO messages
-    RooMsgService::instance().setGlobalKillBelow(RooFit::FATAL);
-    // Silence additional MINUIT output 
-    RooMsgService::instance().setSilentMode(true);
-    // Silence Info in TCanvas::Print: messages
-    gErrorIgnoreLevel = kWarning;
+        // Silence INFO messages
+        RooMsgService::instance().setGlobalKillBelow(RooFit::FATAL);
+        // Silence additional MINUIT output 
+        RooMsgService::instance().setSilentMode(true);
+        // Silence Info in TCanvas::Print: messages
+        gErrorIgnoreLevel = kWarning;
 
 	double massD = 10;
 	int j = 0, k = 0;
@@ -667,7 +667,7 @@ void Validation(TString mass = "10")
 		CMS_lumi(c1, 4, 33);
 		plotchannel(" _" + categories[icategory] + " Channel");
 		c1->SaveAs(categories[icategory] + "_" + variables[3] + "_" + mass + ".pdf");
-        delete c1;
+                delete c1;
 
 		k = k + 19;
 	}
@@ -677,12 +677,12 @@ void PlotAllPdfs()
 {
 
 	gROOT->SetBatch();
-    // Silence INFO messages
-    RooMsgService::instance().setGlobalKillBelow(RooFit::FATAL);
-    // Silence additional MINUIT output 
-    RooMsgService::instance().setSilentMode(true);
-    // Silence Info in TCanvas::Print: messages
-    gErrorIgnoreLevel = kWarning;
+        // Silence INFO messages
+        RooMsgService::instance().setGlobalKillBelow(RooFit::FATAL);
+        // Silence additional MINUIT output 
+        RooMsgService::instance().setSilentMode(true);
+        // Silence Info in TCanvas::Print: messages
+        gErrorIgnoreLevel = kWarning;
 
 	///////////////////////////////// Variable Strings	//////////////////////////////////////////
 	TString variables[4] = { "MuMu_Mass", "TrkTrk_DR", "MuMu_DR", "MuMuTrkTrkMET_Mass" };
@@ -973,7 +973,7 @@ void PlotAllPdfs()
 			CMS_lumi(c1, 4, 33);
 			plotchannel(" _" + categories[icategory] + " Channel");
 			c1->SaveAs(dir + "PlotAllPdfs/ma" + mass_string + "_" + categories[icategory] + "_" + variables[3] + ".pdf");
-            delete c1;
+                        delete c1;
 			k = k + 1;	// Counter for number of workspaces                    
 
 		}
